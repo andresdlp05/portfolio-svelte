@@ -3,4 +3,6 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [sveltekit()]
+	base: '/my-portfolio/',
 });
+
