@@ -3,15 +3,15 @@
     // githubToken = "cambiar a variable de entorno :v";
     
     // Función para hacer el fetch con autenticación
-    async function fetchGithubData(username) {
-      const response = await fetch(`https://api.github.com/users/${username}`, {
-        headers: {
-          'Authorization': `token ${githubToken}`
-        }
-      });
-      return response;
-    }
-  </script>
+//     async function fetchGithubData(username) {
+//       const response = await fetch(`https://api.github.com/users/${username}`, {
+//         headers: {
+//           'Authorization': `token ${githubToken}`
+//         }
+//       });
+//       return response;
+//     }
+//   </script>
   
   <h1>Home</h1>
   
