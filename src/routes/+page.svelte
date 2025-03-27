@@ -1,6 +1,6 @@
 <script>
     // Definir tu token de GitHub aquí
-    const githubToken = "cambiar a variable de entorno :v";
+    // githubToken = "cambiar a variable de entorno :v";
     
     // Función para hacer el fetch con autenticación
     async function fetchGithubData(username) {
