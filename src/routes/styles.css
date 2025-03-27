@@ -105,3 +105,24 @@ button:focus:not(:focus-visible) {
 	width: 1px;
 	white-space: nowrap;
 }
+
+<style>
+    nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+    }
+    
+    nav a {
+        margin-right: 1rem;
+        text-decoration: none;
+        color: var(--text-color);
+    }
+    
+    .current {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    
+    /* Agrega aquí cualquier otro estilo específico de la barra de navegación */
+</style>

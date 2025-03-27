@@ -6,7 +6,7 @@ function $$ (selector, context = document) {
 }
 
 
-
+/*
 let pages = [
     {url: "", title: "Home"},
     {url: "contact/", title: "Contact"},
@@ -44,3 +44,4 @@ for (let p of pages) {
     //nav.insertAdjacentHTML("beforeend", 
     //    `<a href="${ url }">${ title }</a>` );
 }
+    */
