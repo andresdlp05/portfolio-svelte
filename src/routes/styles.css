@@ -106,7 +106,6 @@ button:focus:not(:focus-visible) {
 	white-space: nowrap;
 }
 
-<style>
     nav {
         display: flex;
         justify-content: space-between;
@@ -125,4 +124,3 @@ button:focus:not(:focus-visible) {
     }
     
     /* Agrega aquí cualquier otro estilo específico de la barra de navegación */
-</style>
