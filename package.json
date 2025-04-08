@@ -4,6 +4,7 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"prebuild": "npx elocuent -d static,src -o static/loc.csv",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch"
@@ -15,6 +16,7 @@
 		"@sveltejs/adapter-static": "^2.0.3",
 		"@sveltejs/kit": "^1.5.0",
 		"@types/cookie": "^0.5.1",
+		"elocuent": "^0.0.4",
 		"svelte": "^3.54.0",
 		"svelte-check": "^3.0.1",
 		"typescript": "^5.0.0",

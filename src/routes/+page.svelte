@@ -1,17 +1,36 @@
 <script>
-    // Acceder a la variable de entorno
-    const githubToken = import.meta.env.VITE_GITHUB_TOKEN;
-    
-    // Función para hacer fetch con la API de GitHub
-    async function fetchGithubData(username) {
-      // Verifica si hay un token disponible
-      const headers = githubToken 
-        ? { 'Authorization': `token ${githubToken}` }
-        : {};
-        
-      const response = await fetch(`https://api.github.com/users/${username}`, { headers });
-      return response;
+import { onMount } from "svelte";
+
+let githubData = null;
+let loading = true;
+let error = null;
+
+onMount(async () => {
+    try {
+        const response = await fetch("https://api.github.com/users/andresdlp05");
+        githubData = await response.json();
+    } catch (err) {
+        error = err;
     }
+    loading = false;
+});
+
+
+
+
+// Acceder a la variable de entorno
+const githubToken = import.meta.env.VITE_GITHUB_TOKEN;
+    
+// Función para hacer fetch con la API de GitHub
+async function fetchGithubData(username) {
+  // Verifica si hay un token disponible
+  const headers = githubToken 
+    ? { 'Authorization': `token ${githubToken}` }
+    : {};
+        
+  const response = await fetch(`https://api.github.com/users/${username}`, { headers });
+  return response;
+}
   </script>
   
   <h1>Home</h1>
@@ -25,34 +44,24 @@
    For contact by email you can write to me at vdelapuentea@gmail.com / https://wa.me/+51904586708
   </p>
   
-{#await fetchGithubData("andresdlp05")}
+{#if loading}
   <p>Loading...</p>
-{:then response}
-  {#await response.json()}
-    <p>Decoding...</p>
-  {:then data}
-    <section>
+{:else if error}
+  <p class="error">Something went wrong: {error.message}</p>
+{:else}
+  <section>
       <h2>My GitHub Stats</h2>
       <dl>
-        <dt>Followers</dt>
-        <dd>{data.followers}</dd>
-        <dt>Following</dt>
-        <dd>{data.following}</dd>
-        <dt>Public Repos</dt>
-        <dd>{data.public_repos}</dd>
-        <!-- Puedes añadir más estadísticas si quieres -->
-        <dt>Location</dt>
-        <dd>{data.location || 'Not specified'}</dd>
-        <dt>Account Created</dt>
-        <dd>{new Date(data.created_at).toLocaleDateString()}</dd>
+          <dt>Followers</dt>
+          <dd>{githubData.followers}</dd>
+          <dt>Following</dt>
+          <dd>{githubData.following}</dd>
+          <dt>Public Repositories</dt>
+          <dd>{githubData.public_repos}</dd>
       </dl>
-    </section>
-  {:catch error}
-    <p class="error">Something went wrong: {error.message}</p>
-  {/await}
-{:catch error}
-  <p class="error">Something went wrong: {error.message}</p>
-{/await}
+  </section>
+{/if}
+
 
 <style>
   dl {
